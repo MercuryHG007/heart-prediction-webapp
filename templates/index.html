@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="../static/img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body,
+        header,
+        #intro {
+            height: 100%;
+        }
+
+        form {
+            max-width: 75%;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        #submit-button{
+            margin-left: 45%;
+        }
+    </style>
+    <title>Heart Disease Prediction</title>
+</head>
+
+<body class="result">
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-danger">
+            <a class="navbar-brand text-center" href="/">Heart Disease Prediction WebApp</a>
+          </nav>
+        <!--Mask-->
+        <div id="intro" class="container-fluid view" style="padding: 0 !important;">
+            <h1 class="text-center text-capitalize py-5">Know your chances
+                of having Heart Disease in one Click!</h1>
+            <div class="row md-5 justify-content-center">
+                <div class="col-lg-6 col-md-6 col-10 square centerd mx-auto mb-5">
+                    <img src="../static/img/heart.jpg">
+                    <p class="mt-5">Please enter all the readings of the given parameters after measuring it accurately
+                    </p>
+                </div>
+                <div class="col-lg-6 col-md-6 col-10 square centerd mx-auto mb-5">
+                    <form action="/predict" method="post">
+
+                        <div class="form-group">
+                            <label for="Age">Age</label>
+                            <input class="form-control" type="number" min="0" id="Age" name="Age" required="required"
+                                >
+                        </div>
+                        <div class="form-group">
+                            <label for="Gender">Gender</label>
+                            <select class="form-control" id="Gender" name="Gender" required="required"
+                                placeholder="Select the gender">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="value3">Chest Pain Type:</label>
+
+                            <select type="text" required="required" class="form-control" id="value3"
+                                placeholder="Enter Chest Pain Type" name="value3">
+                                <option value="typical">Typical Angina</option>
+                                <option value="atypical">Atypical Angina</option>
+                                <option value="nonagigal">Non - Anginal Pain</option>
+                                <option value="asymptomatic">Asymptomatic</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="value4">Resting Blood Pressure:</label>
+                            <input type="number" min="0" required="required" class="form-control" id="value4" placeholder="(in mmHg)" name="value4">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="value5">Cholestoral</label>
+                            <input type="number" min="0" required="required" class="form-control" id="value5"
+                                placeholder="(in mg/dl)" name="value5">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="value6">Fasting Blood Sugar</label>
+                            <input type="number" min="0" max="1" required class="form-control" id="value6"
+                                placeholder="(Fasting Blood Sugar >120 mg/dl) (1 = True; 0 = False)"
+                                name="value6">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="value7">Resting ECG</label>
+                            <input type="number" min="0" max="2" required="required" class="form-control" id="value7"
+                                placeholder="(0 = Normal, 1 = Having ST-T Wave Abnormality, 2 = Left Ventricular Hyperthrophy)"
+                                name="value7">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="value8">Max Heart Rate Achieved</label>
+                            <input type="number" min="0" class="form-control" id="value8"
+                                 name="value8" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="value9">Exercise induced angina : </label>
+                            <input type="number" min="1" max="2" class="form-control" id="value8"
+                                placeholder="1 = Yes; 2 = No" name="value9" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="value10">ST Depression Induced by Exercise Relative to Rest </label>
+                            <input type="number" min="0" class="form-control" id="value8"
+                                 name="value10"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="value11">Peak Exercise ST Segment </label>
+                            <input type="number" min="1" max="3" class="form-control" id="value8"
+                                placeholder="1 = Upsloping; 2 = Flat; 3 = Downsloping" name="value11" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="value12">Number of Major Vessels (0-3) Colored by Flourosopy</label>
+                            <input type="number" min="0" max="3" class="form-control" id="value8"
+                                placeholder="Enter number of major vessels (0-3) colored by flourosopy" name="value12"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="value13">Thal : Displays the Thalassemia</label>
+                            <input type="text" min="3" max="7" class="form-control" id="value8"
+                                placeholder="3 = Normal; 6 = Fixed Defect; 7 = Reversable Defect" name="value13"
+                                required>
+                        </div>
+
+                        <button type="submit" id="submit-button" class="btn btn-danger">Predict</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--/.Mask-->
+    </header>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
